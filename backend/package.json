@@ -1,0 +1,15 @@
+{
+  "dependencies": {
+    "aws-sdk": "^2.1539.0",
+    "mongodb": "^6.3.0"
+  },
+  "scripts": {
+    "compile": "tsc",
+    "mock": "sam build --use-container && sam local invoke -e events/event.json"
+  },
+  "devDependencies": {
+    "@types/aws-lambda": "^8.10.131",
+    "@types/node": "^20.11.5",
+    "typescript": "^5.3.3"
+  }
+}
