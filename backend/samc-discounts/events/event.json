@@ -1,5 +1,5 @@
 {
-  "body": "{\"name\": \"Bob\", \"surname\":\"Brown\",\"age\":21}",
+  "body": "{\"name\": \"EventRay\", \"category\":\"event\",\"discount\":\"20\"}",
   "resource": "/{proxy+}",
   "path": "/path/to/resource",
   "httpMethod": "POST",

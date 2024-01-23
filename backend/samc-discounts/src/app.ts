@@ -2,17 +2,25 @@ import {
   APIGatewayProxyEvent, 
   APIGatewayProxyResult } 
 from "aws-lambda/trigger/api-gateway-proxy";
-interface Person {
-  name: string
-  surname: string
-  age: number
+
+interface Business {
+  name: string;
+  category: string;
+  discount: string;
+  location?: { lat: number; lng: number };
+  address?: string;
+  dist?: number;
+  phoneNumbers?: string[];
+  emailAddresses?: string[];
+  websites?: string[];
 }
+
 export const lambdaHandler = async (
    event: APIGatewayProxyEvent
 ): Promise<APIGatewayProxyResult> => {
-  const person: Person = JSON.parse(event.body);
+  const Business: business = JSON.parse(event.body);
   return {
     statusCode: 200,
-    body: JSON.stringify({'Person' : person})
+    body: JSON.stringify({'business' : Business})
   }
 }
