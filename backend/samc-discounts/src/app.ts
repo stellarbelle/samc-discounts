@@ -2,17 +2,22 @@ import {
   APIGatewayProxyEvent, 
   APIGatewayProxyResult } 
 from "aws-lambda/trigger/api-gateway-proxy";
-interface Person {
-  name: string
-  surname: string
-  age: number
+import { MongoClient } from "mongodb";
+interface Business {
+  name: string;
+
+  websites?: string[];
 }
+
+Object.defineProperty(exports, "__esModule", { value: true });
+const client = new MongoClient(process.env.MONGODB_URI);
 export const lambdaHandler = async (
-   event: APIGatewayProxyEvent
+  event: APIGatewayProxyEvent
 ): Promise<APIGatewayProxyResult> => {
-  const person: Person = JSON.parse(event.body);
+  console.log("hello!!!");
+  const databases = await client.db("admin").command({ listDatabases: 1 });
   return {
     statusCode: 200,
-    body: JSON.stringify({'Person' : person})
-  }
+    body: databases,
+  };
 }
