@@ -3,14 +3,23 @@ import {
   APIGatewayProxyResult } 
 from "aws-lambda/trigger/api-gateway-proxy";
 import { MongoClient } from "mongodb";
+
 interface Business {
   name: string;
-
+  category: string;
+  discount: string;
+  location?: { lat: number; lng: number };
+  address?: string;
+  dist?: number;
+  phoneNumbers?: string[];
+  emailAddresses?: string[];
   websites?: string[];
 }
 
 Object.defineProperty(exports, "__esModule", { value: true });
 const client = new MongoClient(process.env.MONGODB_URI);
+
+
 export const lambdaHandler = async (
   event: APIGatewayProxyEvent
 ): Promise<APIGatewayProxyResult> => {
@@ -20,4 +29,3 @@ export const lambdaHandler = async (
     statusCode: 200,
     body: databases,
   };
-}
