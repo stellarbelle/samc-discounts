@@ -6,9 +6,9 @@ let db = new sqlite3.Database("../discounts.db", (err) => {
     return console.log("db error: ", err.message);
   }
   console.log("Connected to database!");
-}));
+});
 
-const places = JSON.parse(fs.readFileSync(`list.json`));
+const places = JSON.parse(fs.readFileSync(`list.json`).toString());
 
 const createBusinessTableCommand = `
 CREATE TABLE IF NOT EXISTS businesses

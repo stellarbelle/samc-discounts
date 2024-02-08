@@ -1,0 +1,35 @@
+name: Upload to S3
+
+on:
+  push:
+    branches:
+      - master
+
+env:
+  AWS_REGION: us-east-1
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    defaults:
+      run:
+        working-directory: ./frontend
+
+    permissions:
+      id-token: write
+
+      contents: read
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - run: npm run build
+
+      - uses: aws-actions/configure-aws-credentials@v1.7.0
+        with:
+          role-to-assume: GithubDeployAction
+          role-session-name: GithubDeploy
+          aws-region: ${{ env.AWS_REGION }}
+
+      - run: aws s3 sync ./build s3://assets-samcdiscounts
