@@ -2,7 +2,6 @@ import { GoogleMap, Marker, LoadScript } from "@react-google-maps/api";
 import { useEffect, useState } from "react";
 import list from "../assets/list.json";
 import "../App.css";
-import { Item } from "../App";
 
 const markerColor: Record<string, string> = {
   "Spa/Salon/Health": "pink-dot",
@@ -16,7 +15,7 @@ interface Location {
   lat: number;
   lng: number;
 }
-const markers = list.map((item: Item, idx: number) => {
+const markers = list.map((item: any, idx: number) => {
   const cat = item.category;
   const color: string = markerColor[cat] || "gray";
   if (item.location) {

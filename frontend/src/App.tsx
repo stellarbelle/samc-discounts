@@ -98,9 +98,9 @@ function App() {
   return (
     <>
       <div className="container">
-        <h1 class={"text-pink font-serif"}>Suwanee Area Moms Club</h1>
+        <h1 >Suwanee Area Moms Club</h1>
         <img src={arrow} alt="feathered arrow" />
-        <h2 class={"text-pink font-serif"}>Member Discount List</h2>
+        <h2 >Member Discount List</h2>
         <Form
           selected={selected}
           categories={categoryList}
