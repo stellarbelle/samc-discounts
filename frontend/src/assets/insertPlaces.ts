@@ -2,7 +2,7 @@ import sqlite3 from "sqlite3";
 import * as fs from "node:fs";
 // open the database connection
 import { Item } from "../App";
-let db = new sqlite3.Database("../discounts.db", (err) => {
+const db = new sqlite3.Database("../discounts.db", (err) => {
   if (err) {
     return console.log("db error: ", err.message);
   }

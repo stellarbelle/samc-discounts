@@ -1,6 +1,7 @@
 import { GoogleMap, Marker, LoadScript } from "@react-google-maps/api";
 import { useEffect, useState } from "react";
 import list from "../assets/list.json";
+import { Item } from "../App";
 import "../App.css";
 
 const markerColor: Record<string, string> = {
@@ -15,14 +16,16 @@ interface Location {
   lat: number;
   lng: number;
 }
-const markers = list.map((item: any, idx: number) => {
-  const cat = item.category;
+
+const markers = list.map((value: any, idx: number) => {
+  //@typescript-eslint/no-unsafe-assignment
+  const cat = value.category;
   const color: string = markerColor[cat] || "gray";
-  if (item.location) {
+  if (value.location) {
     return (
       <Marker
-        position={item.location}
-        key={`pos ${item.name}${idx}`}
+        position={value.location}
+        key={`pos ${value.name}${idx}`}
         icon={`http:// labs.google.com/ridefinder/images/mm_20_${color}.png`}
       />
     );
