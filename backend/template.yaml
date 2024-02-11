@@ -18,7 +18,7 @@ Resources:
   TypescriptFunction:
     Type: AWS::Serverless::Function
     Properties:
-      CodeUri: ../built
+      CodeUri: ./built
       Handler: app.lambdaHandler
       Runtime: nodejs20.x
       Architectures:

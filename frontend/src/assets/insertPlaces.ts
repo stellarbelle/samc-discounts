@@ -6,9 +6,9 @@ let db = new sqlite3.Database("../discounts.db", (err) => {
     return console.log("db error: ", err.message);
   }
   console.log("Connected to database!");
-}));
+});
 
-const places = JSON.parse(fs.readFileSync(`list.json`));
+const places = JSON.parse(fs.readFileSync(`list.json`) as any);
 
 const createBusinessTableCommand = `
 CREATE TABLE IF NOT EXISTS businesses
@@ -25,9 +25,9 @@ CREATE TABLE IF NOT EXISTS businesses
     websites TEXT
 )`;
 
-const createDbPromise = (command) => {
+const createDbPromise = (command: any) => {
   return new Promise((resolve, reject) => {
-    db.run(command, (err, data) => {
+    db.run(command, (err: any, data: any) => {
       if (err) return reject(err);
       resolve(data);
     });
@@ -37,7 +37,7 @@ const createDbPromise = (command) => {
 console.log("Database created!");
 createDbPromise(createBusinessTableCommand)
   .then(() => {
-    places.forEach((place) => {
+    places.forEach((place: any) => {
       db.run(
         "INSERT INTO businesses(id, name, discount, category, address, latitude, longitude, phoneNumbers, emailAddresses, websites) VALUES(NUll, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
         [

@@ -12,7 +12,7 @@ interface Props {
   categories: string[];
   value: string;
   filterBySearch: (e: React.ChangeEvent<HTMLInputElement>) => void;
-  getSelectedList: (string) => void;
+  getSelectedList: (e: string) => void;
 }
 
 const Form = (props: Props) => {
@@ -20,12 +20,10 @@ const Form = (props: Props) => {
     props;
   return (
     <form>
-      <p class={"text-lightPink"} className="subheading">
+      <p className="subheading">
         An easy way to find the discount you are looking for! Just search below!
       </p>
-      <div class={"text-blue"} className="search-text">
-        Search Me!
-      </div>
+      <div className="search-text">Search Me!</div>
       <TextField
         id="search-box"
         type="search"
@@ -34,9 +32,7 @@ const Form = (props: Props) => {
         onChange={filterBySearch}
         value={value}
       />
-      <div class={"text-blue"} className="search-text">
-        Or select a category from the dropdown
-      </div>
+      <div className="search-text">Or select a category from the dropdown</div>
       <FormControl fullWidth>
         <InputLabel id="demo-simple-select-label">Category</InputLabel>
         <Select
