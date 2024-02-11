@@ -27,6 +27,8 @@ export interface Item {
   phoneNumbers?: string[];
   emailAddresses?: string[];
   websites?: string[];
+  latitude?: number;
+  longitude?: number;
 }
 
 const placeList = (list as Item[]).filter((place, index) => {
@@ -98,9 +100,9 @@ function App() {
   return (
     <>
       <div className="container">
-        <h1 >Suwanee Area Moms Club</h1>
+        <h1>Suwanee Area Moms Club</h1>
         <img src={arrow} alt="feathered arrow" />
-        <h2 >Member Discount List</h2>
+        <h2>Member Discount List</h2>
         <Form
           selected={selected}
           categories={categoryList}
