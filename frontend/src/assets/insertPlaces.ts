@@ -1,6 +1,7 @@
 import sqlite3 from "sqlite3";
 import * as fs from "node:fs";
 // open the database connection
+import { Item } from "../App";
 let db = new sqlite3.Database("../discounts.db", (err) => {
   if (err) {
     return console.log("db error: ", err.message);
@@ -25,11 +26,10 @@ CREATE TABLE IF NOT EXISTS businesses
     websites TEXT
 )`;
 
-const createDbPromise = (command) => {
-  return new Promise((resolve, reject) => {
-    db.run(command, (err, data) => {
+const createDbPromise = (command: string) => {
+  return new Promise((reject) => {
+    db.run(command, (err: Error | null) => {
       if (err) return reject(err);
-      resolve(data);
     });
   });
 };
@@ -37,7 +37,7 @@ const createDbPromise = (command) => {
 console.log("Database created!");
 createDbPromise(createBusinessTableCommand)
   .then(() => {
-    places.forEach((place) => {
+    places.forEach((place: Item) => {
       db.run(
         "INSERT INTO businesses(id, name, discount, category, address, latitude, longitude, phoneNumbers, emailAddresses, websites) VALUES(NUll, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
         [
