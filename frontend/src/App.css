@@ -11,6 +11,7 @@
 }
 
 .search-text {
+  color: #087b9a;
   margin-top: 1.5rem;
   margin-right: 10px;
   font-size: 20px;
@@ -34,6 +35,8 @@ h1 {
 
 h1,
 h2 {
+  font-family: Alice, serif;
+  color: #f73378;
   margin-bottom: 0.7rem;
   font-size: 3.2em;
   line-height: 1.1;
@@ -61,6 +64,7 @@ img {
 }
 
 .subheading {
+  color: #f976a4;
   margin-top: 0;
   font-size: 18px;
 }
