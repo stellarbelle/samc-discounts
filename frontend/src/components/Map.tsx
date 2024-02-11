@@ -1,7 +1,6 @@
 import { GoogleMap, Marker, LoadScript } from "@react-google-maps/api";
 import { useEffect, useState } from "react";
 import list from "../assets/list.json";
-import { Item } from "../App";
 import "../App.css";
 
 const markerColor: Record<string, string> = {
