@@ -9,7 +9,7 @@ const db = new sqlite3.Database("../discounts.db", (err) => {
   console.log("Connected to database!");
 });
 
-const places = JSON.parse(fs.readFileSync(`list.json`) as any);
+const places = JSON.parse(fs.readFileSync(`list.json`) as any); //@typescript-eslint/no-unsafe-assignment
 
 const createBusinessTableCommand = `
 CREATE TABLE IF NOT EXISTS businesses
