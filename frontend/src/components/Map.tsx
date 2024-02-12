@@ -16,15 +16,15 @@ interface Location {
   lng: number;
 }
 
+//eslint-disable-next-line no-explicit-any
 const markers = list.map((value: any, idx: number) => {
-  //@typescript-eslint/no-unsafe-assignment
-  const cat = value.category;
+  const cat = value.category; //@typescript-eslint/no-unsafe-assignment
   const color: string = markerColor[cat] || "gray";
   if (value.location) {
     return (
       <Marker
-        position={value.location}
-        key={`pos ${value.name}${idx}`}
+        position={value.location} //@typescript-eslint/no-unsafe-assignment
+        key={`pos ${value.name}${idx}`} //@typescript-eslint/restrict-template-expressions
         icon={`http:// labs.google.com/ridefinder/images/mm_20_${color}.png`}
       />
     );
