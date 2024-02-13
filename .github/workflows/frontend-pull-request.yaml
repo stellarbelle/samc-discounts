@@ -1,5 +1,13 @@
 on:
   pull_request:
+    types:
+      - synchronize
+      - opened
+      - reopened
+
+defaults:
+  run:
+    working-directory: ./frontend/
 
 defaults:
   run:
