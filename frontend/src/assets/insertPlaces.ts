@@ -2,14 +2,15 @@ import sqlite3 from "sqlite3";
 import * as fs from "node:fs";
 // open the database connection
 import { Item } from "../App";
-let db = new sqlite3.Database("../discounts.db", (err) => {
+const db = new sqlite3.Database("../discounts.db", (err) => {
   if (err) {
     return console.log("db error: ", err.message);
   }
   console.log("Connected to database!");
 });
 
-const places = JSON.parse(fs.readFileSync(`list.json`).toString());
+/* eslint-disable */
+const places = JSON.parse(fs.readFileSync(`list.json`) as any);
 
 const createBusinessTableCommand = `
 CREATE TABLE IF NOT EXISTS businesses
