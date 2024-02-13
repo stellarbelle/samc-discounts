@@ -4,11 +4,6 @@ on:
       - synchronize
       - opened
       - reopened
-
-defaults:
-  run:
-    working-directory: ./frontend/
-
 defaults:
   run:
     working-directory: ./frontend
