@@ -35,7 +35,6 @@ const createDbPromise = (command: string) => {
   });
 };
 
-console.log("Database created!");
 createDbPromise(createBusinessTableCommand)
   .then(() => {
     places.forEach((place: Item) => {
@@ -56,7 +55,6 @@ createDbPromise(createBusinessTableCommand)
           if (err) {
             return console.error("insert error: ", err.message);
           }
-          console.log(`Rows inserted ${this.changes}`);
         }
       );
     });

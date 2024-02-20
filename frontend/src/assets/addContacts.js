@@ -14,7 +14,6 @@ const getContacts = (discount) => {
   const websites = discount.match(websiteRegex);
   return { emails, phoneNumbers, websites };
 };
-// console.log("Before Adding data", JSON.stringify(jsonData, null, 4));
 // Modify the JavaScript object by adding new data
 const businessUpdates = jsonData.map((business) => {
   const discount = business.discount;
@@ -42,4 +41,3 @@ fs.writeFileSync("list.json", jsonString, "utf-8", (err) => {
 
 const update_data = fs.readFileSync("list.json");
 const updated_jsonData = JSON.parse(update_data);
-console.log("After Adding data", JSON.stringify(updated_jsonData, null, 4));
