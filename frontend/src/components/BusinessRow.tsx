@@ -5,7 +5,6 @@ const BusinessRow = ({ business }: { business: Item }) => {
   const { discount, name, phoneNumbers, websites, emailAddresses } = {
     ...business,
   };
-  console.log("business: ", business);
   const rows = (
     <TableRow key={name}>
       <TableCell>{name}</TableCell>

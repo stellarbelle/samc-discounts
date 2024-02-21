@@ -32,7 +32,6 @@ const markers = list.map((value: any, idx: number) => {
 });
 const Map = (loc?: Location) => {
   const [center, setCenter] = useState<Location>(townCenter);
-  console.log(center);
   useEffect(() => {
     if (loc) {
       setCenter(loc);

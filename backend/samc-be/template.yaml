@@ -1,10 +1,10 @@
-AWSTemplateFormatVersion: '2010-09-09'
+AWSTemplateFormatVersion: "2010-09-09"
 Transform: AWS::Serverless-2016-10-31
 Description: >
-  discounts
+  samc-be
 
-  Sample SAM Template for discounts
-  
+  Sample SAM Template for samc-be
+
 # More info about Globals: https://github.com/awslabs/serverless-application-model/blob/master/docs/globals.rst
 Globals:
   Function:
@@ -12,21 +12,27 @@ Globals:
 
 Resources:
   HelloWorldFunction:
-    Type: AWS::Serverless::Function
+    Type: AWS::Serverless::Function # More info about Function Resource: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#awsserverlessfunction
     Properties:
-      PackageType: Image
+      CodeUri: samc-discounts/
+      Handler: app.lambdaHandler
+      Runtime: nodejs20.x
       Architectures:
         - x86_64
       Events:
         HelloWorld:
-          Type: Api
+          Type: Api # More info about API Event Source: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#api
           Properties:
             Path: /hello
             Method: get
-    Metadata:
-      DockerTag: nodejs20.x-v1
-      DockerContext: ./hello-world
-      Dockerfile: Dockerfile
+    Metadata: # Manage esbuild properties
+      BuildMethod: esbuild
+      BuildProperties:
+        Minify: true
+        Target: "es2020"
+        Sourcemap: true
+        EntryPoints:
+          - app.ts
 
 Outputs:
   # ServerlessRestApi is an implicit API created out of Events key under Serverless::Function
