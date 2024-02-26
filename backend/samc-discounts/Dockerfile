@@ -1,7 +1,8 @@
 FROM public.ecr.aws/lambda/nodejs:20 as builder
 WORKDIR /usr/app
-COPY package.json app.ts  ./
+COPY package.json ./
 RUN npm install
+COPY app.ts ./
 RUN npm run build
     
 FROM public.ecr.aws/lambda/nodejs:20

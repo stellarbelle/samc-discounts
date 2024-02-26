@@ -11,13 +11,14 @@
         "lint": "eslint '*.ts' --quiet --fix",
         "compile": "tsc",
         "test": "npm run compile && npm run unit",
-        "docker-test": "curl 'http://localhost:9000/2015-03-31/functions/function/invocations' -d @../events/event.json",
         "build": "esbuild app.ts --bundle --minify --sourcemap --platform=node --target=es2020 --outfile=dist/index.js",
-        "build-docker": "docker build --platform linux/amd64 -t docker-image:test .",
-        "run-docker": "docker run --platform linux/amd64 -p 9000:8080 docker-image:test"
+        "docker-build": "docker build --platform linux/amd64 -t docker-image:test .",
+        "docker-run": "docker run --env-file .env --platform linux/amd64 -p 9000:8080 docker-image:test",
+        "docker-test": "curl 'http://localhost:9000/2015-03-31/functions/function/invocations' -d @../events/event.json"
     },
     "dependencies": {
-        "aws-sdk": "^2.1561.0"
+        "aws-sdk": "^2.1561.0",
+        "mongodb": "^6.3.0"
     },
     "devDependencies": {
         "@types/aws-lambda": "^8.10.134",
